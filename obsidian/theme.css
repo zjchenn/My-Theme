@@ -1,0 +1,648 @@
+/* ==========================================================================
+   ZJ — Obsidian Theme
+   --------------------------------------------------------------------------
+   Obsidian adapter of the ZJ design language (originally a Typora theme).
+   One design language, multiple platform adapters:
+   shared/tokens.css is the canonical definition; the --zj-* token block
+   below is a VERBATIM copy — keep it in sync:
+
+       node scripts/check-tokens.mjs
+
+   The theme is light-only: the original Typora theme ships a single light
+   palette, so the same tokens are applied under both .theme-light and
+   .theme-dark to keep the visual identity intact until a real dark palette
+   is designed.
+   ========================================================================== */
+
+.theme-light,
+.theme-dark {
+    /* ==================================================================
+       Shared design tokens — VERBATIM copy of shared/tokens.css
+       ================================================================== */
+
+    /* accent red scale, light → dark */
+    --zj-red-1: #fff3f0;
+    --zj-red-2: #ffd4cc;
+    --zj-red-3: #ffafa3;
+    --zj-red-4: #ff887a;
+    --zj-red-5: #ff5d52;
+    --zj-red-6: #f22f27;
+    --zj-red-7: #cc1616;
+    --zj-red-8: #a60a0f;
+    --zj-red-9: #80010a;
+    --zj-red-10: #590009;
+
+    /* neutral gray scale, light → dark */
+    --zj-gray-1: #ffffff;
+    --zj-gray-2: #fafafa;
+    --zj-gray-3: #f5f5f5;
+    --zj-gray-4: #f0f0f0;
+    --zj-gray-5: #d9d9d9;
+    --zj-gray-6: #bfbfbf;
+    --zj-gray-7: #8c8c8c;
+    --zj-gray-8: #595959;
+    --zj-gray-9: #434343;
+    --zj-gray-10: #262626;
+    --zj-gray-11: #1f1f1f;
+    --zj-gray-12: #141414;
+    --zj-gray-13: #000000;
+
+    /* surfaces */
+    --zj-bg: var(--zj-gray-1);
+    --zj-bg-secondary: var(--zj-gray-2);
+    --zj-bg-tertiary: var(--zj-gray-3);
+
+    /* text */
+    --zj-text: var(--zj-gray-13);
+    --zj-text-secondary: #3f3f3f;
+    --zj-text-muted: var(--zj-gray-7);
+    --zj-text-faint: var(--zj-gray-6);
+
+    /* borders & dividers */
+    --zj-border: var(--zj-gray-4);
+    --zj-border-strong: var(--zj-gray-5);
+    --zj-divider: #e7e7e7;
+
+    /* accent */
+    --zj-accent: var(--zj-red-6);
+    --zj-accent-hover: var(--zj-red-7);
+    --zj-accent-soft: var(--zj-red-4);
+    --zj-accent-bg: var(--zj-red-1);
+    --zj-selection: var(--zj-red-3);
+
+    /* links: blue at rest, red on hover */
+    --zj-link: #0000ff;
+    --zj-link-hover: var(--zj-red-7);
+
+    /* inline emphasis colors */
+    --zj-strong: #dc3545;
+    --zj-em: #ff3502;
+    --zj-mark-bg: #ebffeb;
+    --zj-math: #0000ff;
+    --zj-footnote: #e96900;
+
+    /* lists */
+    --zj-list-marker: #db4d52;
+
+    /* blockquote */
+    --zj-quote-border: #ef7060;
+    --zj-quote-bg: #fff9f9;
+    --zj-quote-text: #3f3f3f;
+
+    /* tables */
+    --zj-table-border: var(--zj-accent);
+    --zj-table-stripe: var(--zj-gray-2);
+
+    /* code */
+    --zj-code-inline-text: #ff3502;
+    --zj-code-inline-bg: #f8f5ec;
+    --zj-code-block-border: #7a7a7a;
+
+    /* typography */
+    --zj-font-body: "Vollkorn", Palatino, Times, Georgia, "Songti SC", "SimSun", serif;
+    --zj-font-mono: "Source Code Pro", "Roboto Mono", Menlo, Consolas, "Microsoft YaHei", monospace;
+    --zj-font-size: 17px;
+    --zj-line-height: 1.8;
+    --zj-code-size: 0.92em;
+
+    /* heading scale (relative to body size) */
+    --zj-h1-size: 2.2em;
+    --zj-h2-size: 1.8em;
+    --zj-h3-size: 1.4em;
+    --zj-h4-size: 1.2em;
+    --zj-h5-size: 1em;
+    --zj-h6-size: 1em;
+    --zj-h1-color: var(--zj-red-10);
+    --zj-heading-color: var(--zj-text);
+
+    /* layout, spacing, radius */
+    --zj-content-width: 860px;
+    --zj-para-spacing: 0.8em;
+    --zj-radius-sm: 2px;
+    --zj-radius-md: 4px;
+
+    /* ==================================================================
+       Obsidian variable mapping — shared tokens → platform variables
+       ================================================================== */
+
+    /* surfaces */
+    --background-primary: var(--zj-bg);
+    --background-primary-alt: var(--zj-bg-secondary);
+    --background-secondary: var(--zj-bg-secondary);
+    --background-secondary-alt: var(--zj-bg-tertiary);
+    --background-modifier-hover: var(--zj-bg-tertiary);
+    --background-modifier-border: var(--zj-border);
+    --background-modifier-border-hover: var(--zj-border-strong);
+    --background-modifier-border-focus: var(--zj-accent-soft);
+
+    /* text */
+    --text-normal: var(--zj-text);
+    --text-muted: var(--zj-text-muted);
+    --text-faint: var(--zj-text-faint);
+    --text-accent: var(--zj-accent);
+    --text-accent-hover: var(--zj-accent-hover);
+    --text-on-accent: var(--zj-gray-1);
+    --text-selection: var(--zj-selection);
+    --text-highlight-bg: var(--zj-mark-bg);
+
+    /* accent / interactive */
+    --interactive-accent: var(--zj-accent);
+    --interactive-accent-hover: var(--zj-accent-hover);
+    --caret-color: var(--zj-accent);
+
+    /* typography */
+    --font-text: var(--zj-font-body);
+    --font-monospace: var(--zj-font-mono);
+    --font-text-size: var(--zj-font-size);
+    --line-height-normal: var(--zj-line-height);
+    --p-spacing: var(--zj-para-spacing);
+    --file-line-width: var(--zj-content-width);
+    --radius-s: var(--zj-radius-sm);
+    --radius-m: var(--zj-radius-md);
+
+    /* headings */
+    --h1-size: var(--zj-h1-size);
+    --h2-size: var(--zj-h2-size);
+    --h3-size: var(--zj-h3-size);
+    --h4-size: var(--zj-h4-size);
+    --h5-size: var(--zj-h5-size);
+    --h6-size: var(--zj-h6-size);
+    --h1-color: var(--zj-h1-color);
+    --h2-color: var(--zj-heading-color);
+    --h3-color: var(--zj-heading-color);
+    --h4-color: var(--zj-heading-color);
+    --h5-color: var(--zj-heading-color);
+    --h6-color: var(--zj-text-muted);
+    --h1-weight: 700;
+    --h2-weight: 700;
+    --h3-weight: 700;
+    --h4-weight: 700;
+    --h5-weight: 700;
+    --h6-weight: 700;
+    --h1-line-height: 1.2;
+    --h2-line-height: 1.4;
+    --h3-line-height: 1.4;
+    --h4-line-height: 1.4;
+
+    /* links */
+    --link-color: var(--zj-link);
+    --link-color-hover: var(--zj-link-hover);
+    --link-decoration: none;
+    --link-external-color: var(--zj-link);
+    --link-external-color-hover: var(--zj-link-hover);
+    --link-unresolved-color: var(--zj-text-faint);
+    --link-unresolved-decoration-style: dashed;
+
+    /* code */
+    --code-normal: var(--zj-code-inline-text);
+    --code-background: var(--zj-code-inline-bg);
+    --code-size: var(--zj-code-size);
+
+    /* blockquote */
+    --blockquote-color: var(--zj-quote-text);
+    --blockquote-background-color: var(--zj-quote-bg);
+    --blockquote-border-color: var(--zj-quote-border);
+    --blockquote-border-thickness: 4px;
+    --blockquote-font-style: normal;
+
+    /* lists */
+    --list-marker-color: var(--zj-list-marker);
+    --list-marker-color-hover: var(--zj-accent-hover);
+    --indentation-guide-color: var(--zj-border);
+
+    /* task lists */
+    --checkbox-color: var(--zj-accent);
+    --checkbox-color-hover: var(--zj-accent-hover);
+    --checkbox-border-color: var(--zj-accent-soft);
+    --checkbox-border-color-hover: var(--zj-accent);
+    --checkbox-marker-color: var(--zj-gray-1);
+    --checkbox-radius: var(--zj-radius-sm);
+
+    /* tables */
+    --table-border-color: var(--zj-table-border);
+    --table-header-background: var(--zj-table-stripe);
+    --table-row-alt-background: var(--zj-table-stripe);
+    --table-header-weight: 700;
+
+    /* horizontal rule */
+    --hr-color: var(--zj-divider);
+    --hr-thickness: 2px;
+
+    /* tags */
+    --tag-color: var(--zj-accent);
+    --tag-color-hover: var(--zj-accent-hover);
+    --tag-background: var(--zj-accent-bg);
+    --tag-background-hover: var(--zj-red-2);
+    --tag-radius: var(--zj-radius-sm);
+    --tag-border-color: transparent;
+    --tag-border-width: 0;
+
+    /* inline title (rendered like the theme's H1 "chapter" heading) */
+    --inline-title-color: var(--zj-h1-color);
+    --inline-title-size: var(--zj-h1-size);
+    --inline-title-weight: 700;
+
+    /* nav / file explorer */
+    --nav-item-color-active: var(--zj-gray-10);
+    --nav-item-background-active: var(--zj-accent-bg);
+
+    /* graph */
+    --graph-node: var(--zj-gray-6);
+    --graph-node-focused: var(--zj-accent);
+    --graph-line: var(--zj-border-strong);
+}
+
+/* ==========================================================================
+   Selection
+   ========================================================================== */
+
+::selection {
+    background: var(--zj-selection);
+}
+
+/* ==========================================================================
+   Inline title — H1-style centered title with the short red underline
+   ========================================================================== */
+
+.inline-title {
+    text-align: center;
+    line-height: 1.2;
+    padding-bottom: 0.3em;
+}
+
+.inline-title::after {
+    content: '';
+    display: block;
+    margin: 0.2em auto 0;
+    width: 100px;
+    border-bottom: 2px solid var(--zj-accent);
+}
+
+/* ==========================================================================
+   Headings — reading view + live preview
+   ========================================================================== */
+
+/* H1: centered chapter heading with the short red underline */
+.markdown-rendered h1,
+.markdown-source-view .cm-line.HyperMD-header-1 {
+    text-align: center;
+    line-height: 1.2;
+    padding-bottom: 0.3em;
+}
+
+.markdown-rendered h1::after,
+.markdown-source-view .cm-line.HyperMD-header-1::after {
+    content: '';
+    display: block;
+    margin: 0.2em auto 0;
+    width: 100px;
+    border-bottom: 2px solid var(--zj-accent);
+}
+
+/* H2: long red divider line; '# ' prefix in reading view only (live preview
+   already shows the markdown hashes while editing) */
+.markdown-rendered h2,
+.markdown-source-view .cm-line.HyperMD-header-2 {
+    border-bottom: 1px solid var(--zj-accent);
+    padding-bottom: 0.1em;
+}
+
+.markdown-rendered h2::before {
+    content: '# ';
+    color: var(--zj-accent);
+}
+
+/* H3: red bar on the left */
+.markdown-rendered h3,
+.markdown-source-view .cm-line.HyperMD-header-3 {
+    padding-left: 9px;
+    border-left: 5px solid var(--zj-accent);
+}
+
+/* H4: boxed heading — red frame with a heavier top edge */
+.markdown-rendered h4 {
+    display: inline-block;
+    padding-left: 6px;
+    padding-right: 6px;
+    border: 1px solid var(--zj-accent);
+    border-top: 4px solid var(--zj-accent);
+}
+
+.markdown-source-view .cm-header-4 {
+    padding: 0 6px;
+    border: 1px solid var(--zj-accent);
+    border-top: 4px solid var(--zj-accent);
+}
+
+/* keep code inside headings at the heading's own size */
+.markdown-rendered h1 code,
+.markdown-rendered h2 code,
+.markdown-rendered h3 code,
+.markdown-rendered h4 code,
+.markdown-rendered h5 code,
+.markdown-rendered h6 code {
+    font-size: inherit;
+}
+
+/* ==========================================================================
+   Inline text styles
+   ========================================================================== */
+
+/* bold: theme red */
+.markdown-rendered strong,
+.markdown-source-view .cm-strong {
+    color: var(--zj-strong);
+    font-weight: 700;
+}
+
+/* italic: rendered as red upright text (CJK italics carry no meaning) */
+.markdown-rendered em,
+.markdown-source-view .cm-em {
+    font-style: normal;
+    color: var(--zj-em);
+}
+
+/* highlight: pale green */
+.markdown-rendered mark,
+.markdown-source-view .cm-highlight {
+    background-color: var(--zj-mark-bg);
+    color: var(--zj-gray-11);
+    border-radius: var(--zj-radius-sm);
+    padding: 1px 4px;
+}
+
+/* ==========================================================================
+   Links
+   --------------------------------------------------------------------------
+   External links keep the theme's classic blue-with-underline look;
+   internal links use the accent red (Typora has no internal links — this is
+   the Obsidian-native reading of the same identity).
+   ========================================================================== */
+
+.markdown-rendered a.external-link,
+.markdown-source-view .cm-link,
+.markdown-source-view .cm-url {
+    color: var(--zj-link);
+    text-decoration: none;
+}
+
+.markdown-rendered a.external-link {
+    border-bottom: 1px solid var(--zj-link);
+}
+
+.markdown-rendered a.external-link:hover {
+    color: var(--zj-link-hover);
+    border-bottom: 2px solid var(--zj-accent);
+}
+
+.markdown-rendered a.internal-link,
+.markdown-source-view .cm-hmd-internal-link {
+    color: var(--zj-accent);
+    text-decoration: none;
+}
+
+.markdown-rendered a.internal-link {
+    border-bottom: 1px solid var(--zj-red-3);
+}
+
+.markdown-rendered a.internal-link:hover {
+    color: var(--zj-accent-hover);
+    border-bottom: 1px solid var(--zj-accent);
+}
+
+/* unresolved internal links: faint + dashed, matching the muted identity */
+.markdown-rendered a.internal-link.is-unresolved {
+    color: var(--zj-text-faint);
+    border-bottom: 1px dashed var(--zj-border-strong);
+}
+
+/* ==========================================================================
+   Lists
+   ========================================================================== */
+
+.markdown-rendered li::marker {
+    color: var(--zj-list-marker);
+    font-weight: 700;
+}
+
+.markdown-source-view .cm-formatting-list {
+    color: var(--zj-list-marker);
+    font-weight: 700;
+}
+
+.markdown-rendered ol,
+.markdown-rendered ul {
+    padding-left: 25px;
+}
+
+/* ==========================================================================
+   Blockquote — red bar + pale red background, in both modes
+   ========================================================================== */
+
+.markdown-rendered blockquote {
+    padding: 10px 15px;
+    margin: var(--zj-para-spacing) 0;
+}
+
+.markdown-source-view .cm-line.HyperMD-quote {
+    background: var(--zj-quote-bg);
+    border-left: 4px solid var(--zj-quote-border);
+    padding-left: 15px;
+    color: var(--zj-quote-text);
+}
+
+/* ==========================================================================
+   Code
+   ========================================================================== */
+
+/* inline code */
+.markdown-rendered :not(pre) > code,
+.markdown-source-view .cm-inline-code {
+    padding: 2px 4px;
+    border-radius: var(--zj-radius-sm);
+    color: var(--zj-code-inline-text);
+    background-color: var(--zj-code-inline-bg);
+    font-family: var(--zj-font-mono);
+    font-size: var(--zj-code-size);
+}
+
+/* fenced code block — reading view: the theme's plain bordered box */
+.markdown-rendered pre {
+    border: 1px solid var(--zj-code-block-border);
+    border-radius: var(--zj-radius-sm);
+    padding: 8px 12px;
+    background: var(--zj-bg);
+}
+
+.markdown-rendered pre > code {
+    background: transparent;
+    padding: 0;
+    color: var(--zj-text);
+    font-size: 0.9em;
+    line-height: 1.55;
+}
+
+/* fenced code block — live preview: frame the codeblock lines like the
+   Typora fence (bordered box, no background fill) */
+.markdown-source-view .cm-line.HyperMD-codeblock {
+    border-left: 1px solid var(--zj-code-block-border);
+    border-right: 1px solid var(--zj-code-block-border);
+    padding-left: 12px;
+    padding-right: 12px;
+    line-height: 1.55;
+}
+
+.markdown-source-view .cm-line.HyperMD-codeblock-begin {
+    border-top: 1px solid var(--zj-code-block-border);
+    border-top-left-radius: var(--zj-radius-sm);
+    border-top-right-radius: var(--zj-radius-sm);
+    padding-top: 4px;
+}
+
+.markdown-source-view .cm-line.HyperMD-codeblock-end {
+    border-bottom: 1px solid var(--zj-code-block-border);
+    border-bottom-left-radius: var(--zj-radius-sm);
+    border-bottom-right-radius: var(--zj-radius-sm);
+    padding-bottom: 4px;
+}
+
+/* rendered code embed in live preview (block not being edited) */
+.markdown-source-view .cm-embed-block {
+    border: 1px solid var(--zj-code-block-border);
+    border-radius: var(--zj-radius-sm);
+}
+
+/* ==========================================================================
+   Tables — red grid lines + striped rows, as in the Typora theme
+   ========================================================================== */
+
+.markdown-rendered table {
+    border-collapse: collapse;
+    margin: var(--zj-para-spacing) 0;
+}
+
+.markdown-rendered table tr {
+    border-top: 1px solid var(--zj-table-border);
+}
+
+.markdown-rendered table tr:nth-child(2n),
+.markdown-rendered thead {
+    background-color: var(--zj-table-stripe);
+}
+
+.markdown-rendered table th {
+    border: 1px solid var(--zj-table-border);
+    border-bottom: 0;
+    padding: 6px 13px;
+    text-align: left;
+}
+
+.markdown-rendered table td {
+    border: 1px solid var(--zj-table-border);
+    padding: 6px 13px;
+    text-align: left;
+}
+
+/* ==========================================================================
+   Horizontal rule
+   ========================================================================== */
+
+.markdown-rendered hr {
+    margin: 16px 0;
+}
+
+/* ==========================================================================
+   Images — rounded corners like .md-image in the Typora theme
+   ========================================================================== */
+
+.markdown-rendered img {
+    border-radius: var(--zj-radius-md);
+}
+
+/* ==========================================================================
+   Footnotes — orange marker on light gray, as in the Typora theme
+   ========================================================================== */
+
+.markdown-rendered a.footnote-link,
+.markdown-rendered .footnote-ref {
+    color: var(--zj-footnote);
+    background-color: var(--zj-bg-tertiary);
+    border-radius: var(--zj-radius-sm);
+    padding: 0 2px;
+    text-decoration: none;
+    border-bottom: none;
+}
+
+.markdown-rendered .footnotes {
+    font-size: 0.85em;
+    color: var(--zj-text-secondary);
+}
+
+/* ==========================================================================
+   Inline math — blue for visibility while editing (prints black in Typora)
+   ========================================================================== */
+
+.markdown-rendered mjx-container:not([display="true"]) {
+    color: var(--zj-math);
+}
+
+/* ==========================================================================
+   Tags
+   ========================================================================== */
+
+.markdown-source-view .cm-hashtag {
+    color: var(--zj-accent);
+}
+
+/* ==========================================================================
+   Callouts — keep Obsidian's type colors, polish the shape
+   ========================================================================== */
+
+.callout {
+    border-radius: var(--zj-radius-md);
+}
+
+/* ==========================================================================
+   Properties (frontmatter) — quiet labels, matching the meta-block style
+   ========================================================================== */
+
+.metadata-container {
+    --metadata-input-font-size: 0.85em;
+}
+
+.metadata-property-key {
+    color: var(--zj-text-muted);
+}
+
+/* ==========================================================================
+   Obsidian UI — sidebar, tabs, status bar, search
+   ========================================================================== */
+
+/* file explorer: active file gets the red left bar from the Typora sidebar */
+.nav-file-title.is-active {
+    background: var(--zj-accent-bg);
+    color: var(--zj-gray-10);
+    box-shadow: inset 4px 0 0 var(--zj-accent);
+}
+
+.nav-file-title:hover,
+.nav-folder-title:hover {
+    background: var(--zj-bg-tertiary);
+}
+
+/* active tab: red top indicator */
+.workspace-tab-header.is-active {
+    box-shadow: inset 0 2px 0 var(--zj-accent);
+}
+
+/* search matches */
+.search-result-file-matched-text {
+    background: var(--zj-selection);
+    color: var(--zj-text);
+}
+
+/* status bar */
+.status-bar {
+    background: var(--zj-bg-secondary);
+    border-top: 1px solid var(--zj-border);
+}

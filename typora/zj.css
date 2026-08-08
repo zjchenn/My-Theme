@@ -1,45 +1,155 @@
 @import 'zj/fonts.css';
 :root {
-    --side-bar-bg-color: #fff;
-    --control-text-color: #777;
-    --select-text-bg-color: #ffafa3;
-    --active-file-text-color: #262626;
-    --active-file-border-color: #f22f27;
+    /* ==================================================================
+       Shared design tokens — VERBATIM copy of shared/tokens.css.
+       Keep in sync:  node scripts/check-tokens.mjs
+       ================================================================== */
+
+    /* accent red scale, light → dark */
+    --zj-red-1: #fff3f0;
+    --zj-red-2: #ffd4cc;
+    --zj-red-3: #ffafa3;
+    --zj-red-4: #ff887a;
+    --zj-red-5: #ff5d52;
+    --zj-red-6: #f22f27;
+    --zj-red-7: #cc1616;
+    --zj-red-8: #a60a0f;
+    --zj-red-9: #80010a;
+    --zj-red-10: #590009;
+
+    /* neutral gray scale, light → dark */
+    --zj-gray-1: #ffffff;
+    --zj-gray-2: #fafafa;
+    --zj-gray-3: #f5f5f5;
+    --zj-gray-4: #f0f0f0;
+    --zj-gray-5: #d9d9d9;
+    --zj-gray-6: #bfbfbf;
+    --zj-gray-7: #8c8c8c;
+    --zj-gray-8: #595959;
+    --zj-gray-9: #434343;
+    --zj-gray-10: #262626;
+    --zj-gray-11: #1f1f1f;
+    --zj-gray-12: #141414;
+    --zj-gray-13: #000000;
+
+    /* surfaces */
+    --zj-bg: var(--zj-gray-1);
+    --zj-bg-secondary: var(--zj-gray-2);
+    --zj-bg-tertiary: var(--zj-gray-3);
+
+    /* text */
+    --zj-text: var(--zj-gray-13);
+    --zj-text-secondary: #3f3f3f;
+    --zj-text-muted: var(--zj-gray-7);
+    --zj-text-faint: var(--zj-gray-6);
+
+    /* borders & dividers */
+    --zj-border: var(--zj-gray-4);
+    --zj-border-strong: var(--zj-gray-5);
+    --zj-divider: #e7e7e7;
+
+    /* accent */
+    --zj-accent: var(--zj-red-6);
+    --zj-accent-hover: var(--zj-red-7);
+    --zj-accent-soft: var(--zj-red-4);
+    --zj-accent-bg: var(--zj-red-1);
+    --zj-selection: var(--zj-red-3);
+
+    /* links: blue at rest, red on hover */
+    --zj-link: #0000ff;
+    --zj-link-hover: var(--zj-red-7);
+
+    /* inline emphasis colors */
+    --zj-strong: #dc3545;
+    --zj-em: #ff3502;
+    --zj-mark-bg: #ebffeb;
+    --zj-math: #0000ff;
+    --zj-footnote: #e96900;
+
+    /* lists */
+    --zj-list-marker: #db4d52;
+
+    /* blockquote */
+    --zj-quote-border: #ef7060;
+    --zj-quote-bg: #fff9f9;
+    --zj-quote-text: #3f3f3f;
+
+    /* tables */
+    --zj-table-border: var(--zj-accent);
+    --zj-table-stripe: var(--zj-gray-2);
+
+    /* code */
+    --zj-code-inline-text: #ff3502;
+    --zj-code-inline-bg: #f8f5ec;
+    --zj-code-block-border: #7a7a7a;
+
+    /* typography */
+    --zj-font-body: "Vollkorn", Palatino, Times, Georgia, "Songti SC", "SimSun", serif;
+    --zj-font-mono: "Source Code Pro", "Roboto Mono", Menlo, Consolas, "Microsoft YaHei", monospace;
+    --zj-font-size: 17px;
+    --zj-line-height: 1.8;
+    --zj-code-size: 0.92em;
+
+    /* heading scale (relative to body size) */
+    --zj-h1-size: 2.2em;
+    --zj-h2-size: 1.8em;
+    --zj-h3-size: 1.4em;
+    --zj-h4-size: 1.2em;
+    --zj-h5-size: 1em;
+    --zj-h6-size: 1em;
+    --zj-h1-color: var(--zj-red-10);
+    --zj-heading-color: var(--zj-text);
+
+    /* layout, spacing, radius */
+    --zj-content-width: 860px;
+    --zj-para-spacing: 0.8em;
+    --zj-radius-sm: 2px;
+    --zj-radius-md: 4px;
+
+    /* ==================================================================
+       Typora adapter — legacy aliases kept for the rules below.
+       New rules should consume the --zj-* tokens directly.
+       ================================================================== */
+    --side-bar-bg-color: var(--zj-bg);
+    --control-text-color: var(--zj-text-muted);
+    --select-text-bg-color: var(--zj-selection);
+    --active-file-text-color: var(--zj-gray-10);
+    --active-file-border-color: var(--zj-accent);
     /* --active-file-bg-color: #fff3f0; */
-    --primary-color: #f22f27;
+    --primary-color: var(--zj-accent);
     /* 中性色 */
-    --mid-1: #ffffff;
-    --mid-2: #fafafa;
-    --mid-3: #f5f5f5;
-    --mid-4: #f0f0f0;
-    --mid-5: #d9d9d9;
-    --mid-6: #bfbfbf;
-    --mid-7: #8c8c8c;
-    --mid-8: #595959;
-    --mid-9: #434343;
-    --mid-10: #262626;
-    --mid-11: #1f1f1f;
-    --mid-12: #141414;
-    --mid-13: #000000;
+    --mid-1: var(--zj-gray-1);
+    --mid-2: var(--zj-gray-2);
+    --mid-3: var(--zj-gray-3);
+    --mid-4: var(--zj-gray-4);
+    --mid-5: var(--zj-gray-5);
+    --mid-6: var(--zj-gray-6);
+    --mid-7: var(--zj-gray-7);
+    --mid-8: var(--zj-gray-8);
+    --mid-9: var(--zj-gray-9);
+    --mid-10: var(--zj-gray-10);
+    --mid-11: var(--zj-gray-11);
+    --mid-12: var(--zj-gray-12);
+    --mid-13: var(--zj-gray-13);
     /* 主题色 */
-    --main-1: #fff3f0;
-    --main-2: #ffd4cc;
-    --main-3: #ffafa3;
-    --main-4: #ff887a;
-    --main-5: #ff5d52;
-    --main-6: #f22f27;
-    --main-7: #cc1616;
-    --main-8: #a60a0f;
-    --main-9: #80010a;
-    --main-10: #590009;
+    --main-1: var(--zj-red-1);
+    --main-2: var(--zj-red-2);
+    --main-3: var(--zj-red-3);
+    --main-4: var(--zj-red-4);
+    --main-5: var(--zj-red-5);
+    --main-6: var(--zj-red-6);
+    --main-7: var(--zj-red-7);
+    --main-8: var(--zj-red-8);
+    --main-9: var(--zj-red-9);
+    --main-10: var(--zj-red-10);
 }
 
 html {
-    font-size: 17px;
+    font-size: var(--zj-font-size);
 }
 
 body {
-    font-family: "Vollkorn", Palatino, Times;
+    font-family: var(--zj-font-body);
     /* font-family: 'Source Han SerifCN', Georgia, Times, 'SimSun', serif!important; */
     color: var(--mid-13);
     -webkit-font-smoothing: antialiased;
@@ -50,7 +160,7 @@ body {
 }
 
 #write {
-    max-width: 860px;
+    max-width: var(--zj-content-width);
     margin: 0 auto;
     padding: 20px 30px 160px;
 }
@@ -89,7 +199,7 @@ body>*:last-child {
 } */
 
 a {
-    color: blue;
+    color: var(--zj-link);
     font-weight: 500;
     padding: 0 2px;
     text-decoration: none;
@@ -106,8 +216,8 @@ a {
 } */
 
 #write a {
-    border-bottom: 1px solid blue;
-    color: blue;
+    border-bottom: 1px solid var(--zj-link);
+    color: var(--zj-link);
     text-decoration: none;
 }
 
@@ -122,7 +232,7 @@ a {
 
 #write a:hover {
     border-bottom: 2px solid var(--main-6);
-    color: var(--main-7);
+    color: var(--zj-link-hover);
 }
 
 h1,
@@ -186,10 +296,10 @@ h3 a {
 h1 {
     text-align: center;
     padding-bottom: 0.3em;
-    font-size: 2.2em;
+    font-size: var(--zj-h1-size);
     line-height: 1.2;
     margin: 2.4em auto 1.2em;
-    color: var(--main-10);
+    color: var(--zj-h1-color);
 }
 
 h1:after {
@@ -206,7 +316,7 @@ h2 {
     /* padding-left: 10px; */
     /* display:inline-block; */
     line-height: 1.4;
-    font-size: 1.8em;
+    font-size: var(--zj-h2-size);
     /* border-left: 9px solid var(--main-6); */
     /* border-bottom: 1px solid #ddd; */
     border-bottom: 1px solid var(--main-6);
@@ -214,15 +324,15 @@ h2 {
 
 h2::before {
     content: '# '!important;
-    color: #f22f27;
+    color: var(--main-6);
 }
 
 h3 {
-    font-size: 1.4em;
+    font-size: var(--zj-h3-size);
     line-height: 1.43;
     margin: 1.6em auto 1.2em;
     padding-left: 9px;
-    border-left: 5px solid #f22f27;
+    border-left: 5px solid var(--main-6);
 }
 
 
@@ -238,7 +348,7 @@ h3 {
 
 h4 {
     margin-top: 1.3em;
-    font-size: 1.2em;
+    font-size: var(--zj-h4-size);
     padding-left: 6px;
     padding-right: 6px;
     display: inline-block;
@@ -262,12 +372,12 @@ h4 {
 
 #write h5 {
     /* margin-left: 2em; */
-    font-size: 1rem;
+    font-size: var(--zj-h5-size);
 }
 
 #write h6 {
     /* margin-left: 2.5em; */
-    font-size: 1rem;
+    font-size: var(--zj-h6-size);
 }
 
 #write h5::before {
@@ -286,7 +396,7 @@ ul,
 ol,
 dl,
 table {
-    margin: 0.8em 0;
+    margin: var(--zj-para-spacing) 0;
 }
 
 li>ol,
@@ -298,7 +408,7 @@ hr {
     height: 2px;
     padding: 0;
     margin: 16px 0;
-    background-color: #e7e7e7;
+    background-color: var(--zj-divider);
     border: 0 none;
     overflow: hidden;
     box-sizing: content-box;
@@ -354,7 +464,7 @@ h6 p {
 
 #write ol>li,
 #write ul>li {
-    color: #db4d52;
+    color: var(--zj-list-marker);
     font-weight: bold;
 }
 
@@ -374,10 +484,10 @@ h6 p {
 }
 
 blockquote {
-    border-left: 4px solid rgb(239, 112, 96);
+    border-left: 4px solid var(--zj-quote-border);
     padding: 10px 15px;
-    color: #3f3f3f;
-    background-color: #fff9f9;
+    color: var(--zj-quote-text);
+    background-color: var(--zj-quote-bg);
 }
 
 table {
@@ -393,7 +503,7 @@ table tr {
 
 table tr:nth-child(2n),
 thead {
-    background-color: #fafafa;
+    background-color: var(--zj-table-stripe);
 }
 
 table tr th {
@@ -424,13 +534,13 @@ table tr td:last-child {
 
 #write strong {
     padding: 0.1em;
-    color: #dc3545;
+    color: var(--zj-strong);
 }
 
 #write em {
     padding: 0 2px 0 2px;
     font-style: normal;
-    color: #ff3502;
+    color: var(--zj-em);
     /* color: #595959;
     background: #F6EEFF; */
 }
@@ -439,7 +549,7 @@ table tr td:last-child {
 /* 数学公式变蓝 */
 
 [md-inline='inline_math'] {
-    color: blue;
+    color: var(--zj-math);
     font-size: 100%;
 }
 
@@ -463,14 +573,14 @@ table tr td:last-child {
 /* 代码框 */
 
 #write .md-fences {
-    border: 1px solid #7a7a7a;
+    border: 1px solid var(--zj-code-block-border);
     -webkit-font-smoothing: initial;
     margin: 2rem 0 !important;
     /* padding: 0.3rem 0 !important; */
     padding: 3px 5px;
     line-height: 1.55rem;
-    border-radius: 2px;
-    font-family: 'Roboto Mono', 'Source Sans Pro', 'Microsoft YaHei', '微软雅黑' !important;
+    border-radius: var(--zj-radius-sm);
+    font-family: var(--zj-font-mono) !important;
     font-size: 0.9rem;
     word-wrap: normal;
 }
@@ -499,11 +609,11 @@ table tr td:last-child {
 #write code,
 tt {
     padding: 2px 4px;
-    border-radius: 2px;
-    font-family: 'Source Code Pro', Roboto Mono, Source Sans Pro, 'Microsoft YaHei', '微软雅黑' !important;
-    font-size: 0.92rem;
-    color: #ff3502;
-    background-color: #f8f5ec;
+    border-radius: var(--zj-radius-sm);
+    font-family: var(--zj-font-mono) !important;
+    font-size: var(--zj-code-size);
+    color: var(--zj-code-inline-text);
+    background-color: var(--zj-code-inline-bg);
     /* color: #c7254e;
     background-color: #f9f2f4;  */
 }
@@ -514,7 +624,7 @@ tt {
 
 #write .md-footnote {
     background-color: #f8f8f8;
-    color: #e96900;
+    color: var(--zj-footnote);
 }
 
 
@@ -534,8 +644,8 @@ tt {
 /* heighlight. */
 
 #write mark {
-    background-color: #EBFFEB;
-    border-radius: 2px;
+    background-color: var(--zj-mark-bg);
+    border-radius: var(--zj-radius-sm);
     padding: 2px 4px;
     margin: 0 2px;
     color: #222;
@@ -573,7 +683,7 @@ tt {
     text-align: center;
     font-size: 0.8rem;
     color: var(--mid-1);
-    border-radius: 2px;
+    border-radius: var(--zj-radius-sm);
     border: 1px solid var(--main-4);
     margin-top: -0.4rem;
     transition: all 0.2s linear;
@@ -648,11 +758,11 @@ tt {
 
 .md-image {
     margin: 24px auto;
-    border-radius: 4px;
+    border-radius: var(--zj-radius-md);
 }
 
 .md-image img {
-    border-radius: 4px;
+    border-radius: var(--zj-radius-md);
 }
 
 

@@ -1,0 +1,129 @@
+/* ==========================================================================
+   Shared Design Tokens — canonical design language for all platform adapters
+   --------------------------------------------------------------------------
+   This file is the single source of truth for the visual identity of the
+   theme (colors, typography, spacing, radius, heading scale).
+
+   Platform adapters (typora/, obsidian/, web/) embed a VERBATIM copy of the
+   token definitions below and map them onto their own selectors / variables.
+   They do NOT @import this file at runtime, because each platform requires
+   a self-contained, copy-and-paste installable theme file.
+
+   Keep every adapter's token block in sync with this file:
+       node scripts/check-tokens.mjs
+   ========================================================================== */
+
+:root {
+    /* ------------------------------------------------------------------
+       Palette — raw color scales (semantic tokens derive from these)
+       ------------------------------------------------------------------ */
+
+    /* accent red scale, light → dark */
+    --zj-red-1: #fff3f0;
+    --zj-red-2: #ffd4cc;
+    --zj-red-3: #ffafa3;
+    --zj-red-4: #ff887a;
+    --zj-red-5: #ff5d52;
+    --zj-red-6: #f22f27;
+    --zj-red-7: #cc1616;
+    --zj-red-8: #a60a0f;
+    --zj-red-9: #80010a;
+    --zj-red-10: #590009;
+
+    /* neutral gray scale, light → dark */
+    --zj-gray-1: #ffffff;
+    --zj-gray-2: #fafafa;
+    --zj-gray-3: #f5f5f5;
+    --zj-gray-4: #f0f0f0;
+    --zj-gray-5: #d9d9d9;
+    --zj-gray-6: #bfbfbf;
+    --zj-gray-7: #8c8c8c;
+    --zj-gray-8: #595959;
+    --zj-gray-9: #434343;
+    --zj-gray-10: #262626;
+    --zj-gray-11: #1f1f1f;
+    --zj-gray-12: #141414;
+    --zj-gray-13: #000000;
+
+    /* ------------------------------------------------------------------
+       Semantic colors
+       ------------------------------------------------------------------ */
+
+    /* surfaces */
+    --zj-bg: var(--zj-gray-1);
+    --zj-bg-secondary: var(--zj-gray-2);
+    --zj-bg-tertiary: var(--zj-gray-3);
+
+    /* text */
+    --zj-text: var(--zj-gray-13);
+    --zj-text-secondary: #3f3f3f;
+    --zj-text-muted: var(--zj-gray-7);
+    --zj-text-faint: var(--zj-gray-6);
+
+    /* borders & dividers */
+    --zj-border: var(--zj-gray-4);
+    --zj-border-strong: var(--zj-gray-5);
+    --zj-divider: #e7e7e7;
+
+    /* accent */
+    --zj-accent: var(--zj-red-6);
+    --zj-accent-hover: var(--zj-red-7);
+    --zj-accent-soft: var(--zj-red-4);
+    --zj-accent-bg: var(--zj-red-1);
+    --zj-selection: var(--zj-red-3);
+
+    /* links: blue at rest, red on hover */
+    --zj-link: #0000ff;
+    --zj-link-hover: var(--zj-red-7);
+
+    /* inline emphasis colors */
+    --zj-strong: #dc3545;
+    --zj-em: #ff3502;
+    --zj-mark-bg: #ebffeb;
+    --zj-math: #0000ff;
+    --zj-footnote: #e96900;
+
+    /* lists */
+    --zj-list-marker: #db4d52;
+
+    /* blockquote */
+    --zj-quote-border: #ef7060;
+    --zj-quote-bg: #fff9f9;
+    --zj-quote-text: #3f3f3f;
+
+    /* tables */
+    --zj-table-border: var(--zj-accent);
+    --zj-table-stripe: var(--zj-gray-2);
+
+    /* code */
+    --zj-code-inline-text: #ff3502;
+    --zj-code-inline-bg: #f8f5ec;
+    --zj-code-block-border: #7a7a7a;
+
+    /* ------------------------------------------------------------------
+       Typography
+       ------------------------------------------------------------------ */
+    --zj-font-body: "Vollkorn", Palatino, Times, Georgia, "Songti SC", "SimSun", serif;
+    --zj-font-mono: "Source Code Pro", "Roboto Mono", Menlo, Consolas, "Microsoft YaHei", monospace;
+    --zj-font-size: 17px;
+    --zj-line-height: 1.8;
+    --zj-code-size: 0.92em;
+
+    /* heading scale (relative to body size) */
+    --zj-h1-size: 2.2em;
+    --zj-h2-size: 1.8em;
+    --zj-h3-size: 1.4em;
+    --zj-h4-size: 1.2em;
+    --zj-h5-size: 1em;
+    --zj-h6-size: 1em;
+    --zj-h1-color: var(--zj-red-10);
+    --zj-heading-color: var(--zj-text);
+
+    /* ------------------------------------------------------------------
+       Layout, spacing, radius
+       ------------------------------------------------------------------ */
+    --zj-content-width: 860px;
+    --zj-para-spacing: 0.8em;
+    --zj-radius-sm: 2px;
+    --zj-radius-md: 4px;
+}

@@ -1,0 +1,8 @@
+{
+    "id": "zj-theme",
+    "name": "ZJ",
+    "version": "0.1.0",
+    "minAppVersion": "1.0.0",
+    "author": "theigrams",
+    "description": "Obsidian adapter of the ZJ theme — a serif, red-accent design language originally created for Typora. Light mode only."
+}
